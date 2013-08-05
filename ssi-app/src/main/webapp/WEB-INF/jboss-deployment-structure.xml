@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+	<deployment>
+		<dependencies>
+			<module name="org.codehaus.jackson.jackson-core-asl" export="true" />
+			<module name="org.codehaus.jackson.jackson-jaxrs" export="true" />
+			<module name="org.codehaus.jackson.jackson-mapper-asl" export="true" />
+		</dependencies>
+	</deployment>
+</jboss-deployment-structure>
