@@ -14,6 +14,18 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>ericrglass.mvn.repo</id>
+      <url>https://github.com/ericrglass/mvn-repo/raw/master</url>
+      <!-- use snapshot version -->
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
