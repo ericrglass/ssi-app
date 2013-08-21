@@ -5,6 +5,11 @@
 
 	<display-name>SSI-APP</display-name>
 	<distributable />
+	
+	<context-param>
+    <param-name>com.github.ssi_app.servlet.ENABLE_DEVICE_DETECTION_FEATURE</param-name>
+    <param-value>true</param-value>
+	</context-param>
 
 	<filter>
 		<filter-name>GzipFilter</filter-name>
@@ -27,6 +32,10 @@
 	<servlet>
 		<servlet-name>SSIServlet</servlet-name>
 		<servlet-class>com.github.ssi_app.servlet.SsiAppServlet</servlet-class>
+    <init-param>
+      <param-name>com.github.ssi_servlet.PRODUCTION_MODE</param-name>
+      <param-value>false</param-value>
+    </init-param>
 		<init-param>
 			<param-name>com.github.ssi_servlet.HTML_COMPRESSOR</param-name>
 			<param-value>false</param-value>
@@ -62,10 +71,20 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+  <servlet>
+    <servlet-name>DeviceServlet</servlet-name>
+    <servlet-class>com.github.ssi_app.servlet.DeviceServlet</servlet-class>
+  </servlet>
+
 	<servlet-mapping>
 		<servlet-name>SSIServlet</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DeviceServlet</servlet-name>
+    <url-pattern>/deviceServlet</url-pattern>
+  </servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>welcome.html</welcome-file>
