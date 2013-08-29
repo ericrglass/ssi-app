@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ssi-app" default="init" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<property name="webappSrc" location="${basedir}/src/main/webapp" />
+
+	<target name="init">
+		<path id="maven-ant-tasks.classpath">
+			<fileset dir="${user.home}/.m2/repository/org/apache/maven/maven-ant-tasks">
+				<include name="**/maven-ant-tasks-*.jar" />
+			</fileset>
+		</path>
+		<typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant" classpathref="maven-ant-tasks.classpath" />
+		<artifact:dependencies pathId="dependency.classpath">
+			<pom file="pom.xml" />
+		</artifact:dependencies>
+		<typedef name="concatMinimize" classname="com.github.ssi_servlet.ant.taskdefs.ConcatMinimize">
+			<classpath refid="dependency.classpath" />
+		</typedef>
+	</target>
+
+	<target name="deviceDetectionJS" depends="init" description="Create the device detection JavaScript">
+		<concatMinimize destfile="${webappSrc}/js/deviceDetection-1.0.0.min.js" eol="lf">
+			<fileset dir="${webappSrc}/js">
+				<include name="bmaputil-1.3.0.js" />
+				<include name="bmap-1.3.0.js" />
+				<include name="modernizr-2.6.2.min.js" />
+				<include name="probes-1.3.0.js" />
+				<include name="devicegroups-1.3.0.js" />
+			</fileset>
+		</concatMinimize>
+	</target>
+
+</project>
