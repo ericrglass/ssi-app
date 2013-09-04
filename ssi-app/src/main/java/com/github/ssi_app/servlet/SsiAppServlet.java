@@ -52,6 +52,8 @@ public class SsiAppServlet extends SsiServlet {
 		if (deviceDetectionFeature) {
 			// For the device detection feature, force buffered to be true
 			buffered = true;
+			// For the device detection feature, force expires to be 0 seconds
+			expires = 0l;
 		}
 
 		if (debug > 0) {
