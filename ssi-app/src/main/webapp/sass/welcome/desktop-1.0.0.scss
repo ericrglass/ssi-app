@@ -1,0 +1,25 @@
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+@import 'compass';
+
+// Reset
+@import 'github/normalize';
+@import "github/print";
+
+@import "../base";
+@import "../baseDesktop";
+@import "../standardLayoutHeader";
+@import "../standardLayoutFooter";
+
+.mainContent {
+  @extend %grid-24-of-24;
+	.features, .langDeviceInfo {
+    @extend %grid-12-of-24;
+	}
+	h3 {
+	  margin-top: 0;
+    margin-bottom: 10px;
+	}
+}

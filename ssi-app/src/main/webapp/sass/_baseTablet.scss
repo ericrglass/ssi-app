@@ -1,0 +1,12 @@
+// base tablet - min-width: 768px and max-width: 991px
+
+/**
+ * Generates a 768px 24-column grid with 10px gutters
+ */
+@include generate-grid(24, 22, 10, grid-24);
+
+.page {
+  @extend %grid-24;
+  padding-left: .5%;
+  padding-right: .5%;
+}

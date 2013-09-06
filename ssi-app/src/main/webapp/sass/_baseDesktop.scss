@@ -1,0 +1,12 @@
+// base desktop - min-width: 992px
+
+/**
+ * Generates a 984px 24-column grid with 20px gutters
+ */
+@include generate-grid(24, 21, 20, grid-24);
+
+.page {
+  @extend %grid-24;
+  padding-left: 1%;
+  padding-right: 1%;
+}
