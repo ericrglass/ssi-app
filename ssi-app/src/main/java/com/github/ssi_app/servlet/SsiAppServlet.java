@@ -12,6 +12,7 @@ import com.github.ssi_servlet.SsiServlet;
 public class SsiAppServlet extends SsiServlet {
 
 	public static final String INIT_PARAM_ENABLE_DEVICE_DETECTION_FEATURE = "com.github.ssi_app.servlet.ENABLE_DEVICE_DETECTION_FEATURE";
+	public static final String INIT_PARAM_REQUEST_DELEGATOR_CLASS_NAME = "com.github.ssi_app.servlet.RequestDelegatorClassName";
 
 	public static final String REQ_ATTR_DEVICE_SESSION_AVAILABLE = "DEVICE_SESSION_AVAILABLE";
 	public static final String REQ_ATTR_DEVICE_SCREEN_WIDTH = "DEVICE_SCREEN_WIDTH";
@@ -36,8 +37,11 @@ public class SsiAppServlet extends SsiServlet {
 	private static final long serialVersionUID = -5364812322312373560L;
 
 	private boolean deviceDetectionFeature = false;
+	private String reqDelegatorClassName;
+	private Class<IRequestDelegator> reqDelegatorClass;
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public void init() throws ServletException {
 		super.init();
 		deviceDetectionFeature = Boolean
@@ -56,12 +60,44 @@ public class SsiAppServlet extends SsiServlet {
 			expires = 0l;
 		}
 
+		reqDelegatorClassName = getInitParameter(INIT_PARAM_REQUEST_DELEGATOR_CLASS_NAME);
+
+		if ((reqDelegatorClassName == null)
+				|| (reqDelegatorClassName.length() == 0)) {
+			reqDelegatorClassName = getServletContext().getInitParameter(
+					INIT_PARAM_REQUEST_DELEGATOR_CLASS_NAME);
+		}
+
+		if ((reqDelegatorClassName != null)
+				&& (reqDelegatorClassName.length() > 0)) {
+			Class<?> testClass = null;
+
+			try {
+				testClass = Thread.currentThread().getContextClassLoader()
+						.loadClass(reqDelegatorClassName);
+			} catch (ClassNotFoundException e) {
+				testClass = null;
+			}
+
+			if ((testClass != null)
+					&& IRequestDelegator.class.isAssignableFrom(testClass)) {
+				reqDelegatorClass = (Class<IRequestDelegator>) testClass;
+			}
+		}
+
 		if (debug > 0) {
 			log("SsiAppServlet.init() - ["
 					+ getServletContext().getContextPath()
 					+ "] - the device detection feature: "
 					+ ((deviceDetectionFeature) ? "Has been enabled"
 							: "Was not enabled"));
+
+			if (reqDelegatorClass != null) {
+				log("SsiAppServlet.init() - ["
+						+ getServletContext().getContextPath()
+						+ "] - started with request delegator class name '"
+						+ reqDelegatorClassName + "'");
+			}
 		}
 	}
 
@@ -130,6 +166,23 @@ public class SsiAppServlet extends SsiServlet {
 	protected void requestHandlerInProcessSSI(final HttpServletRequest req,
 			final HttpServletResponse res) throws IOException {
 		super.requestHandlerInProcessSSI(req, res);
+
+		if (reqDelegatorClass != null) {
+			IRequestDelegator reqDelegator = null;
+
+			try {
+				reqDelegator = reqDelegatorClass.newInstance();
+			} catch (InstantiationException e) {
+				reqDelegator = null;
+			} catch (IllegalAccessException e) {
+				reqDelegator = null;
+			}
+
+			if (reqDelegator != null) {
+				reqDelegator.processRequest(req, (debug > 0));
+			}
+		}
+
 		DeviceSessionBean deviceSession = null;
 
 		if (deviceDetectionFeature) {
