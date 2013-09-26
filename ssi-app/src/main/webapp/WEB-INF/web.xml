@@ -10,11 +10,16 @@
     <param-name>com.github.ssi_app.servlet.ENABLE_DEVICE_DETECTION_FEATURE</param-name>
     <param-value>true</param-value>
 	</context-param>
-
+  
 	<filter>
 		<filter-name>GzipFilter</filter-name>
 		<filter-class>net.sf.ehcache.constructs.web.filter.GzipFilter</filter-class>
 	</filter>
+
+  <filter>
+    <filter-name>ExpiresFilter</filter-name>
+    <filter-class>com.github.ssi_servlet.SsiExpiresFilter</filter-class>
+  </filter>
 
 	<filter-mapping>
 		<filter-name>GzipFilter</filter-name>
@@ -29,16 +34,33 @@
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
 
+  <filter-mapping>
+    <filter-name>ExpiresFilter</filter-name>
+    <url-pattern>*.css</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>ExpiresFilter</filter-name>
+    <url-pattern>*.js</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>ExpiresFilter</filter-name>
+    <url-pattern>*.ico</url-pattern>
+  </filter-mapping>
+
 	<servlet>
 		<servlet-name>SSIServlet</servlet-name>
 		<servlet-class>com.github.ssi_app.servlet.SsiAppServlet</servlet-class>
     <init-param>
       <param-name>com.github.ssi_servlet.PRODUCTION_MODE</param-name>
-      <param-value>false</param-value>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.github.ssi_app.servlet.RequestDelegatorClassName</param-name>
+      <param-value>com.github.ssi_app.request.SsiAppRequestDelegator</param-value>
     </init-param>
 		<init-param>
 			<param-name>com.github.ssi_servlet.HTML_COMPRESSOR</param-name>
-			<param-value>false</param-value>
+			<param-value>true</param-value>
 		</init-param>
 		<init-param>
 			<param-name>com.github.ssi_servlet.COMPRESS_CSS</param-name>
@@ -53,20 +75,26 @@
       <param-value>true</param-value>
     </init-param>
 		<init-param>
+		  <!-- The number of seconds before a page with SSI directives will expire. Default behaviour is for all SSI directives to be evaluated for every request. -->
+      <!-- Forced to 0 when either UPDATE_HTML_LANG_DIR_PER_REQUEST or ENABLE_DEVICE_DETECTION_FEATURE is true. -->
 			<param-name>expires</param-name>
-			<param-value>1</param-value>
+			<param-value>0</param-value>
 		</init-param>
 		<init-param>
+		  <!-- Should output from this servlet be buffered? Default false. -->
+      <!-- Forced to true when either UPDATE_HTML_LANG_DIR_PER_REQUEST, ENABLE_DEVICE_DETECTION_FEATURE, or HTML_COMPRESSOR is true. -->
 			<param-name>buffered</param-name>
 			<param-value>true</param-value>
 		</init-param>
 		<init-param>
+		  <!-- Should "virtual" SSI directive paths be interpreted as relative to the context root, instead of the server root? Default false. -->
 			<param-name>isVirtualWebappRelative</param-name>
 			<param-value>false</param-value>
 		</init-param>
 		<init-param>
+		  <!-- Debugging detail level for messages logged by this servlet. Default 0. -->
 			<param-name>debug</param-name>
-			<param-value>1</param-value>
+			<param-value>0</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
