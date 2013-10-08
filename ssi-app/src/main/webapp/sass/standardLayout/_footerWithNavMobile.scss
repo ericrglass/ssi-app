@@ -1,0 +1,9 @@
+@import "footer";
+
+.footer-copyright, .footer-nav {
+  @extend %grid-24-of-24;
+}
+
+.footer-nav-list {
+  margin-top: .5em;
+}

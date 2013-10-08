@@ -1,0 +1,13 @@
+@import "footer";
+
+.footer-copyright {
+  @extend %grid-9-of-24;
+}
+
+.footer-nav {
+  @extend %grid-15-of-24;
+}
+
+.footer-nav-list {
+  @extend .right;
+}
