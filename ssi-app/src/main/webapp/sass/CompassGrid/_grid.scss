@@ -1,4 +1,3 @@
-
 //*************************
 // $$ Grid
 //**************************
@@ -8,48 +7,53 @@
 // @extended in generate-grids() to ensure any grid container is clearfixed
 %clearfix:before,
 %clearfix:after {
-  content:" ";
-  display:table;
+	content:" ";
+	display:table;
 }
 %clearfix:after {
-  clear:both;
+	clear:both;
 }
 
 @mixin generate-grid($_cols, $_width, $_gutters, $_grid_wrapper:grids) {
-  $_total: $_cols * ($_width + $_gutters);
-  $_margin: ($_gutters / $_total) * 100;
+	$_total: $_cols * ($_width + $_gutters);
+	$_margin: ($_gutters / $_total) * 100;
 
-  %#{$_grid_wrapper} {
-    clear:both;
-    width:auto;
-    margin:0 0 0 (-1% * $_margin);
-    @extend %clearfix;
+	%#{$_grid_wrapper} {
+		clear:both;
+		width:auto;
+		margin:0 0 0 (-1% * $_margin);
+		@extend %clearfix;
 
-    %_grid {
-      float:left;
-      margin:0 0 0 (1% * $_margin);
-    }
-    %_push-or-pull { position:relative; }
+		%_grid {
+			float:left;
+			margin:0 0 0 (1% * $_margin);
+		}
 
-    @for $i from 1 through $_cols {
-      $_grid-width:((($_width * $i) + ($_gutters * ($i - 1)))/$_total);
-      $_grid-margin-left:$_margin * 1%;
+	    %pad-end {
+	      padding-right: (1% * $_margin);
+	    }
 
-      %grid-#{$i}-of-#{$_cols} {
-        @extend %_grid;
-        width: $_grid-width * 100%;
-      }
+		%_push-or-pull { position:relative; }
 
-      %push-#{$i}-of-#{$_cols} {
-        @extend %_push-or-pull;
-        left: (100% * $_grid-width) + $_grid-margin-left;
-      }
-      %pull-#{$i}-of-#{$_cols} {
-        @extend %_push-or-pull;
-        left: (-100% * $_grid-width) - $_grid-margin-left;
-      }
-    }
-  }
+		@for $i from 1 through $_cols {
+			$_grid-width:((($_width * $i) + ($_gutters * ($i - 1)))/$_total);
+			$_grid-margin-left:$_margin * 1%;
+
+			%grid-#{$i}-of-#{$_cols} {
+				@extend %_grid;
+				width: $_grid-width * 100%;
+			}
+
+			%push-#{$i}-of-#{$_cols} {
+				@extend %_push-or-pull;
+				left: (100% * $_grid-width) + $_grid-margin-left;
+			}
+			%pull-#{$i}-of-#{$_cols} {
+				@extend %_push-or-pull;
+				left: (-100% * $_grid-width) - $_grid-margin-left;
+			}
+		}
+	}
 
 
 }
