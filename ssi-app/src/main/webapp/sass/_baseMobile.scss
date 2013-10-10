@@ -1,4 +1,5 @@
 // base mobile - min-width: 320px and max-width: 480px
+@import "base";
 
 /**
  * Generates a 319.2px 24-column grid with 0px gutters
@@ -7,4 +8,8 @@
 
 .page {
   @extend %grid-24;
+}
+
+.pad-end {
+  @extend %pad-end;
 }

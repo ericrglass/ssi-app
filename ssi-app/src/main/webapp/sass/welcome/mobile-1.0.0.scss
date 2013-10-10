@@ -1,17 +1,6 @@
-
-// Make sure the charset is set appropriately
-@charset "UTF-8";
-
-@import 'compass';
-
-// Reset
-@import 'github/normalize';
-@import "github/print";
-
-@import "../base";
 @import "../baseMobile";
-@import "../standardLayoutHeader";
-@import "../standardLayoutFooter";
+@import "../standardLayout/header";
+@import "../standardLayout/footerWithNavMobile";
 
 .mainContent {
   @extend %grid-24-of-24;

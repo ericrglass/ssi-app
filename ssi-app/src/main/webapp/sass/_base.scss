@@ -1,5 +1,22 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
 
-/**
- * CompassGrid
- */
+@import 'compass';
+
+// Reset
+@import 'github/normalize';
+@import "github/print";
+
+// Foundation Variables
+@import "foundation/variables";
+
+// Foundation Components
+@import "foundation/components/global";
+@import "foundation/components/inline-lists";
+
+// CompassGrid
 @import "CompassGrid/grid";
+
+.bottom-margin-0 {
+	margin-bottom: 0 !important;
+}
