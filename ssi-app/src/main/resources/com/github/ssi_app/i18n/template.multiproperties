@@ -12,67 +12,67 @@
             <Name>en</Name>
             <Description>English</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>ar</Name>
             <Description>Arabic</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_ar.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_ar.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>zh</Name>
             <Description>Chinese</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_zh.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_zh.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>fr</Name>
             <Description>French</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_fr.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_fr.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>de</Name>
             <Description>German</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_de.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_de.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>iw</Name>
             <Description>Hebrew</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_iw.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_iw.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>hi</Name>
             <Description>Hindi</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_hi.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_hi.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>it</Name>
             <Description>Italian</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_it.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_it.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>ja</Name>
             <Description>Japanese</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_ja.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_ja.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>ko</Name>
             <Description>Korean</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_ko.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_ko.properties|true|true|false|false</HandlerConfiguration>
         </Column>
         <Column>
             <Name>es</Name>
             <Description>Spanish</Description>
             <Width>150</Width>
-            <HandlerConfiguration>/ssi-rest/src/main/resources/com/github/ssi_rest/i18n/template_es.properties|true|true|false|false</HandlerConfiguration>
+            <HandlerConfiguration>/ssi-app/src/main/resources/com/github/ssi_app/i18n/template_es.properties|true|true|false|false</HandlerConfiguration>
         </Column>
     </Columns>
     <Records>
