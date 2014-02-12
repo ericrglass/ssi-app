@@ -2,9 +2,14 @@ package com.github.ssi_app.servlet;
 
 import java.io.IOException;
 
+import javax.el.ELContext;
+import javax.el.ExpressionFactory;
+import javax.el.ValueExpression;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.JspApplicationContext;
+import javax.servlet.jsp.JspFactory;
 
 import com.github.ssi_app.bean.DeviceSessionBean;
 import com.github.ssi_servlet.SsiServlet;
@@ -101,9 +106,113 @@ public class SsiAppServlet extends SsiServlet {
 		}
 	}
 
+	@SuppressWarnings("el-syntax")
+	protected String expressionSubstitution(final HttpServletRequest req,
+			final String html) {
+		if ((html == null) || (html.trim().length() == 0)) {
+			return html;
+		}
+
+		JspApplicationContext jspAppCntxt = null;
+
+		try {
+			jspAppCntxt = JspFactory.getDefaultFactory()
+					.getJspApplicationContext(getServletContext());
+		} catch (Exception e) {
+			jspAppCntxt = null;
+			log("SsiAppServlet.expressionSubstitution() - JspFactory.getDefaultFactory()"
+					+ ".getJspApplicationContext() Exception: "
+					+ e.getMessage());
+		}
+
+		ExpressionFactory expFactory = null;
+
+		if (jspAppCntxt != null) {
+			expFactory = jspAppCntxt.getExpressionFactory();
+		}
+
+		ELContext elCntxt = null;
+
+		if (expFactory != null) {
+			try {
+				elCntxt = JspFactory.getDefaultFactory()
+						.getPageContext(this, req, null, null, false, 0, false)
+						.getELContext();
+			} catch (Exception e) {
+				elCntxt = null;
+				log("SsiAppServlet.expressionSubstitution() - JspFactory.getDefaultFactory()"
+						+ ".getPageContext().getELContext() Exception: "
+						+ e.getMessage());
+			}
+		}
+
+		StringBuilder updatedHtml = new StringBuilder(html);
+		int expStartPos = updatedHtml.indexOf("#{");
+
+		while (expStartPos > -1) {
+			int expEndPos = updatedHtml.indexOf("}", expStartPos);
+			String expStr = null;
+
+			if (expEndPos > expStartPos + 2) {
+				expStr = updatedHtml.substring(expStartPos + 2, expEndPos);
+
+				if ((expStr.indexOf("\\n") > -1)
+						|| (expStr.indexOf("\\r") > -1)) {
+					expStr = null;
+				}
+			}
+
+			if (expStr != null) {
+				Object expValue = req.getAttribute(expStr.trim());
+
+				if (expValue != null) {
+					updatedHtml.replace(expStartPos, expEndPos + 1,
+							expValue.toString());
+				} else if (elCntxt != null) {
+					ValueExpression valueExp = null;
+
+					try {
+						valueExp = expFactory.createValueExpression(elCntxt,
+								"#{" + expStr + "}", Object.class);
+					} catch (Exception e) {
+						valueExp = null;
+						log("SsiAppServlet.expressionSubstitution() - ExpressionFactory.createValueExpression(#{"
+								+ expStr + "}) Exception: " + e.getMessage());
+					}
+
+					if (valueExp != null) {
+						try {
+							expValue = valueExp.getValue(elCntxt);
+						} catch (Exception e) {
+							expValue = null;
+							log("SsiAppServlet.expressionSubstitution() - ValueExpression.getValue(#{"
+									+ expStr
+									+ "}) Exception: "
+									+ e.getMessage());
+						}
+
+						if (expValue != null) {
+							updatedHtml.replace(expStartPos, expEndPos + 1,
+									expValue.toString());
+						}
+					}
+				}
+			}
+
+			if (expStartPos + 2 >= updatedHtml.length()) {
+				break;
+			}
+
+			expStartPos = updatedHtml.indexOf("#{", expStartPos + 2);
+		}
+
+		return updatedHtml.toString();
+	}
+
 	@Override
 	protected String processBufferedBeforeCompress(
 			final HttpServletRequest req, final String html) {
+		String updatedHtml = expressionSubstitution(req, html);
 		DeviceSessionBean deviceSession = null;
 
 		if (deviceDetectionFeature) {
@@ -112,11 +221,11 @@ public class SsiAppServlet extends SsiServlet {
 
 		if ((deviceSession == null)
 				|| (deviceSession.getHtmlClassNames() == null)) {
-			return super.processBufferedBeforeCompress(req, html);
+			return super.processBufferedBeforeCompress(req, updatedHtml);
 		}
 
 		StringBuilder deviceHtml = new StringBuilder(
-				super.processBufferedBeforeCompress(req, html));
+				super.processBufferedBeforeCompress(req, updatedHtml));
 		int htmlPos = deviceHtml.indexOf("<html");
 
 		if (htmlPos < 0) {
