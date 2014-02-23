@@ -32,13 +32,12 @@
 	</target>
 
 	<target name="welcomeJS" depends="init" description="Create the welcome page JavaScript">
-		<concatMinimize destfile="${webappSrc}/js/welcome/welcomeDesktop-1.0.0.min.js" eol="lf">
+		<concatMinimize destfile="${webappSrc}/js/welcome/welcome-1.0.0.min.js" eol="lf">
 			<fileset dir="${webappSrc}/js">
 				<include name="jquery-1.10.2.js" />
 				<include name="foundation-4.3.2.js" />
 				<include name="foundation.reveal-4.3.2.js" />
 				<include name="yourProfile/yourProfile.js" />
-				<include name="yourProfile/yourProfileDecktop.js" />
         <include name="standardLayout/footerWithNav.js" />
 			</fileset>
 		</concatMinimize>
