@@ -390,17 +390,34 @@ table {
 
   .navbar-toggle {
     display: none; } }
+meta.foundation-version {
+  font-family: "/5.1.0/"; }
+
 meta.foundation-mq-small {
-  font-family: "only screen and (min-width: 768px)";
-  width: 768px; }
+  font-family: "/only screen and (max-width: 40em)/";
+  width: 0em; }
 
 meta.foundation-mq-medium {
-  font-family: "only screen and (min-width:1280px)";
-  width: 1280px; }
+  font-family: "/only screen and (min-width:40.063em)/";
+  width: 40.063em; }
 
 meta.foundation-mq-large {
-  font-family: "only screen and (min-width:1440px)";
-  width: 1440px; }
+  font-family: "/only screen and (min-width:64.063em)/";
+  width: 64.063em; }
+
+meta.foundation-mq-xlarge {
+  font-family: "/only screen and (min-width:90.063em)/";
+  width: 90.063em; }
+
+meta.foundation-mq-xxlarge {
+  font-family: "/only screen and (min-width:120.063em)/";
+  width: 120.063em; }
+
+meta.foundation-data-attribute-namespace {
+  font-family: false; }
+
+html, body {
+  height: 100%; }
 
 *,
 *:before,
@@ -455,23 +472,20 @@ img {
 .right, .footer-nav-list {
   float: right !important; }
 
-.text-left {
-  text-align: left !important; }
-
-.text-right {
-  text-align: right !important; }
-
-.text-center {
-  text-align: center !important; }
-
-.text-justify {
-  text-align: justify !important; }
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    display: table; }
+  .clearfix:after {
+    clear: both; }
 
 .hide {
   display: none; }
 
 .antialiased {
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 img {
   display: inline-block;
@@ -484,10 +498,9 @@ textarea {
 select {
   width: 100%; }
 
-/* Inline Lists */
 .inline-list {
-  margin: 0 auto 1.0625em auto;
-  margin-left: -1.375em;
+  margin: 0 auto 1.0625rem auto;
+  margin-left: -1.375rem;
   margin-right: 0;
   padding: 0;
   list-style: none;
@@ -495,7 +508,7 @@ select {
   .inline-list > li {
     list-style: none;
     float: left;
-    margin-left: 1.375em;
+    margin-left: 1.375rem;
     display: block; }
     .inline-list > li > * {
       display: block; }
@@ -543,6 +556,80 @@ select {
   padding-top: 10px;
   padding-bottom: 20px; }
 
+.reveal-modal-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: black;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 98;
+  display: none;
+  top: 0;
+  left: 0; }
+
+dialog, .reveal-modal {
+  visibility: hidden;
+  display: none;
+  position: absolute;
+  left: 50%;
+  z-index: 99;
+  height: auto;
+  margin-left: -40%;
+  width: 80%;
+  background-color: white;
+  padding: 1.25rem;
+  border: solid 1px #666666;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  top: 6.25rem; }
+  dialog .column,
+  dialog .columns, .reveal-modal .column,
+  .reveal-modal .columns {
+    min-width: 0; }
+  dialog > :first-child, .reveal-modal > :first-child {
+    margin-top: 0; }
+  dialog > :last-child, .reveal-modal > :last-child {
+    margin-bottom: 0; }
+  dialog .close-reveal-modal, .reveal-modal .close-reveal-modal {
+    font-size: 1.375rem;
+    line-height: 1;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.6875rem;
+    color: #aaaaaa;
+    font-weight: bold;
+    cursor: pointer; }
+
+dialog[open] {
+  display: block;
+  visibility: visible; }
+
+@media print {
+  dialog, .reveal-modal {
+    background: #fff !important; } }
+/* @include exports("reveal") { */
+/* @media only screen and (min-width:40.063em) { */
+dialog, .reveal-modal {
+  padding: 1.875rem;
+  top: 6.25rem; }
+  dialog.tiny, .reveal-modal.tiny {
+    margin-left: -15%;
+    width: 30%; }
+  dialog.small, .reveal-modal.small {
+    margin-left: -20%;
+    width: 40%; }
+  dialog.medium, .reveal-modal.medium {
+    margin-left: -30%;
+    width: 60%; }
+  dialog.large, .reveal-modal.large {
+    margin-left: -35%;
+    width: 70%; }
+  dialog.xlarge, .reveal-modal.xlarge {
+    margin-left: -47.5%;
+    width: 95%; }
+
+/* } */
+/* } */
 .mainContent h3 {
   margin-top: 0;
   margin-bottom: 10px; }

@@ -2,7 +2,7 @@
 <html lang="en-US" dir="ltr">
 <head>
 <!--#include file="includes/snippet/meta.html" -->
-<title><!--#echo encoding="none" var="WELCOME_TITLE" --></title>
+<title>#{WELCOME_TITLE}</title>
 <!--#include file="includes/deviceDetection/headDeviceDetection.html" -->
 <!--#include file="includes/linkIcon.html" -->
 <!--#if expr="$PRODUCTION_MODE=true" -->
@@ -24,80 +24,91 @@
 <!--#endif -->
 </head>
 <body class="page">
+<!--#if expr="$DEVICE_SESSION_AVAILABLE=true" -->
   <!--#set var="HEADER_TITLE" value="$WELCOME_TITLE" -->
   <!--#include file="includes/standardLayout/header.html" -->
   <!--#include file="includes/element/sectionDivStart.html" --> id="mainContent" class="mainContent" <!--#include file="includes/element/startTagClosure.html" -->
-    <h3><!--#echo encoding="none" var="WELCOME_HEADING" --></h3>
+    <h3>#{WELCOME_HEADING}</h3>
     <!--#include file="includes/element/sectionDivStart.html" --> id="features" class="features" <!--#include file="includes/element/startTagClosure.html" -->
-      <h4><!--#echo encoding="none" var="WELCOME_FEATURES" --></h4>
+      <h4>#{WELCOME_FEATURES}</h4>
       <ul>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_1" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_2" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_3" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_4" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_5" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_6" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_7" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_8" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_9" --></li>
-        <li><!--#echo encoding="none" var="WELCOME_FEATURE_10" --></li>
+        <li>#{WELCOME_FEATURE_1}</li>
+        <li>#{WELCOME_FEATURE_2}</li>
+        <li>#{WELCOME_FEATURE_3}</li>
+        <li>#{WELCOME_FEATURE_4}</li>
+        <li>#{WELCOME_FEATURE_5}</li>
+        <li>#{WELCOME_FEATURE_6}</li>
+        <li>#{WELCOME_FEATURE_7}</li>
+        <li>#{WELCOME_FEATURE_8}</li>
+        <li>#{WELCOME_FEATURE_9}</li>
+        <li>#{WELCOME_FEATURE_10}</li>
         <li>Production mode features that help improve server side response and Web browser rendering performance</li>
       </ul>
     <!--#include file="includes/element/sectionDivEnd.html" -->
     <!--#include file="includes/element/sectionDivStart.html" --> id="langDeviceInfo" class="langDeviceInfo" <!--#include file="includes/element/startTagClosure.html" -->
-      <h4><!--#echo encoding="none" var="WELCOME_HTML_DEVICE_INFO" --></h4>
+      <h4>#{WELCOME_HTML_DEVICE_INFO}</h4>
       <ul>
-        <li>HTML_LANG: <!--#echo var="HTML_LANG"  --></li>
-        <li>HTML_DIR: <!--#echo var="HTML_DIR"  --></li>
-<!--#if expr="$DEVICE_SESSION_AVAILABLE=true" -->
-        <li>DEVICE_SESSION_AVAILABLE: <!--#echo var="DEVICE_SESSION_AVAILABLE"  --></li>
-        <li>DEVICE_SCREEN_WIDTH: <!--#echo var="DEVICE_SCREEN_WIDTH"  --></li>
-        <li>DEVICE_SCREEN_HEIGHT: <!--#echo var="DEVICE_SCREEN_HEIGHT"  --></li>
-        <li>DEVICE_CLIENT_WIDTH: <!--#echo var="DEVICE_CLIENT_WIDTH"  --></li>
-        <li>DEVICE_CAN_RESIZE_BROWSER_WINDOW: <!--#echo var="DEVICE_CAN_RESIZE_BROWSER_WINDOW"  --></li>
-        <li>DEVICE_PIXEL_RATIO: <!--#echo var="DEVICE_PIXEL_RATIO"  --></li>
-        <li>DEVICE_HTML5_SUPPORTED: <!--#echo var="DEVICE_HTML5_SUPPORTED"  --></li>
-  <!--#if expr="$DEVICE_PORTRAIT=true" -->
-        <li>DEVICE_PORTRAIT: <!--#echo var="DEVICE_PORTRAIT"  --></li>
+        <li>HTML_LANG: #{HTML_LANG}</li>
+        <li>HTML_DIR: #{HTML_DIR}</li>
+  <!--#if expr="$DEVICE_SESSION_AVAILABLE=true" -->
+        <li>DEVICE_SESSION_AVAILABLE: #{DEVICE_SESSION_AVAILABLE}</li>
+        <li>DEVICE_SCREEN_WIDTH: #{DEVICE_SCREEN_WIDTH}</li>
+        <li>DEVICE_SCREEN_HEIGHT: #{DEVICE_SCREEN_HEIGHT}</li>
+        <li>DEVICE_CLIENT_WIDTH: #{DEVICE_CLIENT_WIDTH}</li>
+        <li>DEVICE_CAN_RESIZE_BROWSER_WINDOW: #{DEVICE_CAN_RESIZE_BROWSER_WINDOW}</li>
+        <li>DEVICE_PIXEL_RATIO: #{DEVICE_PIXEL_RATIO}</li>
+        <li>DEVICE_HTML5_SUPPORTED: #{DEVICE_HTML5_SUPPORTED}</li>
+    <!--#if expr="$DEVICE_PORTRAIT=true" -->
+        <li>DEVICE_PORTRAIT: #{DEVICE_PORTRAIT}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_LANDSCAPE=true" -->
+        <li>DEVICE_LANDSCAPE: #{DEVICE_LANDSCAPE}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_SMARTPHONE=true" -->
+        <li>DEVICE_SMARTPHONE: #{DEVICE_SMARTPHONE}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_TABLET=true" -->
+        <li>DEVICE_TABLET: #{DEVICE_TABLET}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_HIGH_RESOLUTION_DISPLAY=true" -->
+        <li>DEVICE_HIGH_RESOLUTION_DISPLAY: #{DEVICE_HIGH_RESOLUTION_DISPLAY}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_BROWSER=true" -->
+        <li>DEVICE_BROWSER: #{DEVICE_BROWSER}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_OLD_BROWSER=true" -->
+        <li>DEVICE_OLD_BROWSER: #{DEVICE_OLD_BROWSER}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_IE9=true" -->
+        <li>DEVICE_IE9: #{DEVICE_IE9}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_IE8=true" -->
+        <li>DEVICE_IE8: #{DEVICE_IE8}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_IE8_OR_LESS=true" -->
+        <li>DEVICE_IE8_OR_LESS: #{DEVICE_IE8_OR_LESS}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_IE7=true" -->
+        <li>DEVICE_IE7: #{DEVICE_IE7}</li>
+    <!--#endif -->
+    <!--#if expr="$DEVICE_LESS_THAN_IE7=true" -->
+        <li>DEVICE_LESS_THAN_IE7: #{DEVICE_LESS_THAN_IE7}</li>
+    <!--#endif -->
   <!--#endif -->
-  <!--#if expr="$DEVICE_LANDSCAPE=true" -->
-        <li>DEVICE_LANDSCAPE: <!--#echo var="DEVICE_LANDSCAPE"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_SMARTPHONE=true" -->
-        <li>DEVICE_SMARTPHONE: <!--#echo var="DEVICE_SMARTPHONE"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_TABLET=true" -->
-        <li>DEVICE_TABLET: <!--#echo var="DEVICE_TABLET"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_HIGH_RESOLUTION_DISPLAY=true" -->
-        <li>DEVICE_HIGH_RESOLUTION_DISPLAY: <!--#echo var="DEVICE_HIGH_RESOLUTION_DISPLAY"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_BROWSER=true" -->
-        <li>DEVICE_BROWSER: <!--#echo var="DEVICE_BROWSER"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_OLD_BROWSER=true" -->
-        <li>DEVICE_OLD_BROWSER: <!--#echo var="DEVICE_OLD_BROWSER"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_IE9=true" -->
-        <li>DEVICE_IE9: <!--#echo var="DEVICE_IE9"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_IE8=true" -->
-        <li>DEVICE_IE8: <!--#echo var="DEVICE_IE8"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_IE8_OR_LESS=true" -->
-        <li>DEVICE_IE8_OR_LESS: <!--#echo var="DEVICE_IE8_OR_LESS"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_IE7=true" -->
-        <li>DEVICE_IE7: <!--#echo var="DEVICE_IE7"  --></li>
-  <!--#endif -->
-  <!--#if expr="$DEVICE_LESS_THAN_IE7=true" -->
-        <li>DEVICE_LESS_THAN_IE7: <!--#echo var="DEVICE_LESS_THAN_IE7"  --></li>
-  <!--#endif -->
-<!--#endif -->
       </ul>
     <!--#include file="includes/element/sectionDivEnd.html" -->
   <!--#include file="includes/element/sectionDivEnd.html" -->
   <!--#include file="includes/standardLayout/footerWithNav.html" -->
   <!--#include file="includes/deviceDetection/scriptDeviceEventHandlers.html" -->
+  <!--#if expr="$PRODUCTION_MODE=true" -->
+    <script src="js/welcome/welcome-1.0.0.min.js"></script>
+  <!--#else -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/foundation-4.3.2.js"></script>
+    <script src="js/foundation.reveal-4.3.2.js"></script>
+    <script src="js/yourProfile/yourProfile.js"></script>
+    <script src="js/standardLayout/footerWithNav.js"></script>
+  <!--#endif -->
+<!--#endif -->
 </body>
 </html>
