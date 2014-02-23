@@ -1,0 +1,11 @@
+
+@import "reveal";
+
+@if $include-html-reveal-classes {
+
+  dialog, .#{$reveal-modal-class} {
+    @include reveal-modal-style(false, $reveal-modal-padding * 1.5, false, $box-shadow: false, $top-offset: $reveal-position-top * .1);
+
+    &.mobile { @include reveal-modal-base(false, 99%); }
+  }
+}

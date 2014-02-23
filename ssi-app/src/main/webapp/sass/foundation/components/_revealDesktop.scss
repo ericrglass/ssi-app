@@ -1,0 +1,19 @@
+
+@import "reveal";
+
+/* @include exports("reveal") { */
+  @if $include-html-reveal-classes {
+    /* @media #{$medium-up} { */
+
+      dialog, .#{$reveal-modal-class} {
+        @include reveal-modal-style(false, $reveal-modal-padding * 1.5, false, $box-shadow: false, $top-offset: $reveal-position-top);
+
+        &.tiny  { @include reveal-modal-base(false, 30%); }
+        &.small { @include reveal-modal-base(false, 40%); }
+        &.medium  { @include reveal-modal-base(false, 60%); }
+        &.large { @include reveal-modal-base(false, 70%); }
+        &.xlarge { @include reveal-modal-base(false, 95%); }
+      }
+    /* } */
+  }
+/* } */
