@@ -1,15 +1,16 @@
 <!--#if expr="$DEVICE_SESSION_AVAILABLE!=true" -->
   <!--#if expr="$PRODUCTION_MODE=true" -->
-<script src="js/deviceDetection-1.0.0.min.js"></script>
+<script src="js/deviceDetection-1.1.0.min.js"></script>
   <!--#else -->
-<script src="js/bmaputil-1.3.0.js"></script>
-<script src="js/bmap-1.3.0.js"></script>
-<script src="js/modernizr-2.6.2.min.js"></script>
-<script src="js/probes-1.3.0.js"></script>
-<script src="js/devicegroups-1.3.0.js"></script>
+<script src="js/bmaputil-1.4.0.js"></script>
+<script src="js/bmap-1.4.0.js"></script>
+<script src="js/modernizr-2.7.1.min.js"></script>
+<script src="js/matchMedia-0.1.1.js"></script>
+<script src="js/probes-1.4.0.js"></script>
+<script src="js/devicegroups-1.4.0.js"></script>
   <!--#endif -->
 <script>
-  BrowserMap.forwardRequest();
+  BrowserMap.matchDeviceGroups();
   var probingResults = BrowserMap.getProbingResults();
   document.getElementsByTagName('html')[0].className=' '+probingResults['orientation']+' '+document.getElementsByTagName('html')[0].className;
   var matchedGroups = BrowserMap.getMatchedDeviceGroups();

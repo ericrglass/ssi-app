@@ -6,9 +6,20 @@
     <!--#include virtual="../element/navDivStart.html" --> class="footer-nav-list"<!--#include virtual="../element/startTagClosure.html" -->
       <ul class="inline-list bottom-margin-0">
         <li>
-          <a href="#" onclick="return false;"><!--#echo encoding="none" var="COMMON_USER_PROFILE" --></a>
+          <a href="#" onclick="footerWithNav.showYourProfile();return false;"
+             ontouchstart="footerWithNav.showYourProfile();return false;"
+             title="#{COMMON_SELECT_VIEW_YOUR_PROFILE}">
+            #{COMMON_YOUR_PROFILE}
+          </a>
         </li>
       </ul>
     <!--#include virtual="../element/navDivEnd.html" -->
   </div>
 <!--#include virtual="../element/footerDivEnd.html" -->
+<!--#if expr="$DEVICE_CLIENT_WIDTH>=992" -->
+  <!--#include virtual="../yourProfile/yourProfileDesktop.html" -->
+<!--#elif expr="$DEVICE_CLIENT_WIDTH>=768" -->
+  <!--#include virtual="../yourProfile/yourProfileTablet.html" -->
+<!--#else -->
+  <!--#include virtual="../yourProfile/yourProfileMobile.html" -->
+<!--#endif -->
