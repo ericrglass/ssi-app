@@ -77,21 +77,106 @@
     </Columns>
     <Records>
         <Property>
-            <Name>COMMON_USER_PROFILE</Name>
+            <Name>COMMON_YOUR_PROFILE</Name>
             <Description></Description>
             <Disabled>false</Disabled>
-            <DefaultValue>User Profile</DefaultValue>
+            <DefaultValue>Your Profile</DefaultValue>
             <Value disabled="true"></Value>
             <Value disabled="true"></Value>
             <Value disabled="true"></Value>
-            <Value disabled="false">Profil d'utilisateur</Value>
+            <Value disabled="false">Votre profil</Value>
             <Value disabled="true"></Value>
             <Value disabled="true"></Value>
             <Value disabled="true"></Value>
-            <Value disabled="false">Profilo utente</Value>
+            <Value disabled="false">Il tuo profilo</Value>
             <Value disabled="true"></Value>
             <Value disabled="true"></Value>
-            <Value disabled="false">Perfil de usuario</Value>
+            <Value disabled="false">Su perfil</Value>
+        </Property>
+        <Property>
+            <Name>COMMON_SELECT_VIEW_YOUR_PROFILE</Name>
+            <Description></Description>
+            <Disabled>false</Disabled>
+            <DefaultValue>Select to view your profile</DefaultValue>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="false">Sélectionnez cette option pour afficher votre profil</Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="false">Selezionare questa opzione per visualizzare il tuo profilo</Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="false">Seleccione para ver tu perfil</Value>
+        </Property>
+        <Property>
+            <Name>COMMON_PREFERRED_CULTURE</Name>
+            <Description></Description>
+            <Disabled>false</Disabled>
+            <DefaultValue>Your preferred culture</DefaultValue>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="false">Votre culture préféré</Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="false">Vostra cultura preferito</Value>
+            <Value disabled="true"></Value>
+            <Value disabled="true"></Value>
+            <Value disabled="false">Su cultura recomendado</Value>
+        </Property>
+        <Property>
+            <Name>COMMON_LANGUAGE</Name>
+            <Description></Description>
+            <Disabled>false</Disabled>
+            <DefaultValue>Language</DefaultValue>
+            <Value disabled="true"></Value>
+            <Value disabled="false">لغة</Value>
+            <Value disabled="false">语</Value>
+            <Value disabled="false">Langue</Value>
+            <Value disabled="false">Sprache</Value>
+            <Value disabled="false">שפה</Value>
+            <Value disabled="false">भाषा</Value>
+            <Value disabled="false">Lingua</Value>
+            <Value disabled="false">言語</Value>
+            <Value disabled="false">언어</Value>
+            <Value disabled="false">Idioma</Value>
+        </Property>
+        <Property>
+            <Name>COMMON_COUNTRY</Name>
+            <Description></Description>
+            <Disabled>false</Disabled>
+            <DefaultValue>Country</DefaultValue>
+            <Value disabled="true"></Value>
+            <Value disabled="false">بلد</Value>
+            <Value disabled="false">国家</Value>
+            <Value disabled="false">Pays</Value>
+            <Value disabled="false">Land</Value>
+            <Value disabled="false">מדינה</Value>
+            <Value disabled="false">देश</Value>
+            <Value disabled="false">Nazione</Value>
+            <Value disabled="false">カントリー</Value>
+            <Value disabled="false">국가</Value>
+            <Value disabled="false">País</Value>
+        </Property>
+        <Property>
+            <Name>COMMON_SAVE_CHANGES</Name>
+            <Description></Description>
+            <Disabled>false</Disabled>
+            <DefaultValue>Save Changes</DefaultValue>
+            <Value disabled="true"></Value>
+            <Value disabled="false">حفظ التغييرات</Value>
+            <Value disabled="false">保存更改</Value>
+            <Value disabled="false">Enregistrer les Modifications</Value>
+            <Value disabled="false">Änderungen Speichern</Value>
+            <Value disabled="false">שמור שינויים</Value>
+            <Value disabled="false">परिवर्तन सहेजें</Value>
+            <Value disabled="false">Salva le Modifiche</Value>
+            <Value disabled="false">変更を保存</Value>
+            <Value disabled="false">변경 사항을 저장</Value>
+            <Value disabled="false">Guardar Cambios</Value>
         </Property>
     </Records>
 </MultiProperties>
